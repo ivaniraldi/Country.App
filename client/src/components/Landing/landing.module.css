@@ -1,0 +1,37 @@
+.btnEnter {
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  color: #121312;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 25px;
+  text-decoration: none;
+  padding: 10px 32px;
+  margin-left: 80px;
+  text-shadow: 0px 1px 0px #ffffff;
+  margin-top: 50px;
+}
+.Landing {
+  background: url("./background.jpg");
+  width: 100%;
+  height: auto;
+  min-width: 1024px;
+  opacity: 100%;
+  min-height: 100%;
+  position: fixed;
+}
+.Subt {
+  max-width: 600px;
+  margin-top: 20px;
+  margin-left: 80px;
+  font-size: 35px;
+  color: ivory;
+}
+.Header {
+  margin-top: 50px;
+  margin-left: 80px;
+  font-size: 50px;
+  color: ivory;
+}

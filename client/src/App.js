@@ -1,18 +1,18 @@
 import './App.css';
-import { Route } from 'react-router-dom'
-
+import { Routes ,Route } from 'react-router-dom';
+import LandingPage from './components/Landing/landing';
+import About from './components/About/about';
 
 function App() {
   return (
-    <div className="App">
-          <div>
-            <Route exact path="/"/>
-            <Route exact path="/home"/>
-            <Route exact path="/home/countryDetail/:name"/>
-            <Route exact path="/addAct"/>
-            <Route exact path="/activities"/>
-          </div>
-    </div>
+    <>
+    <Routes>
+          <Route path="/home" />
+          <Route path="/addAct" />
+          <Route path='/about' element={<About/>} />
+          <Route path='/' element={<LandingPage/>} />
+    </Routes>
+    </>
   );
 }
 
