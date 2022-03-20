@@ -1,9 +1,17 @@
 import './App.css';
+import { Route } from 'react-router-dom'
+
 
 function App() {
   return (
     <div className="App">
-      <h1>Henry Countries</h1>
+          <div>
+            <Route exact path="/"/>
+            <Route exact path="/home"/>
+            <Route exact path="/home/countryDetail/:name"/>
+            <Route exact path="/addAct"/>
+            <Route exact path="/activities"/>
+          </div>
     </div>
   );
 }
