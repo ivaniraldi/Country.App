@@ -69,8 +69,8 @@ const Countries = () => {
         <button className={s.paged} onClick={() => orderCountries("ASC")}>A-Z</button>
         <button className={s.paged} onClick={() => orderCountries("DSC")}>Z-A</button>
         <p>By Continent</p>
-        <select name="continent" onChange={handleSelect}>
-          <option disabled>Continent</option>
+        <select name="continentOrder" onChange={handleSelect}>
+          <option value="continent">Continent</option>
           <option value="Africa">Africa</option>
           <option value="Americas">Americas</option>
           <option value="Asia">Asia</option>

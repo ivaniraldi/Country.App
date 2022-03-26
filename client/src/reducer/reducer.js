@@ -35,6 +35,12 @@ const reducer = (state = initialState, action) => {
     }
 
     case "ORDER_BY_CONTINENT":
+      if(action.payload === "continent"){
+        return{
+          ...state,
+          filterCountries: state.countries
+        }
+      }
       return {
         ...state,
         filterCountries: state.countries.filter(e => e.continent === action.payload)
