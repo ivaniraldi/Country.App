@@ -29,7 +29,11 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     area: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    population: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     }
   });
