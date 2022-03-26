@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-
+import s from "./search.module.css"
 import { getCountryByName } from "../../actions/actions";
 
 export default function SearchBar() {
@@ -12,25 +12,24 @@ export default function SearchBar() {
     e.preventDefault();
     setName(e.target.value);
     dispatch(getCountryByName(name));
-    console.log("soy el input", e.target.value);
   }
 
   function onSearch(e) {
     e.preventDefault();
     dispatch(getCountryByName(name));
     setName("");
-    console.log("soy el botón", name);
   }
 
   return (
-    <div>
+    <div className={s.searchBar}>
       <input
+      className={s.inputSearch}
         type="text"
-        placeholder="Country.."
+        placeholder="Type a country..."
         onChange={(e) => handleChange(e)}
       ></input>
 
-      <button type="submit" onClick={(e) => onSearch(e)}>
+      <button className={s.buttonSearch} type="submit" onClick={(e) => onSearch(e)}>
         Search Country
       </button>
     </div>

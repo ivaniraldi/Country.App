@@ -1,0 +1,111 @@
+.formulario{
+    color: var(--main-color-text);
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 1.0em;
+    /* display: flex; */
+    justify-content: center;
+    border:6px solid rgb(236, 235, 219);
+    background-color: rgb(245, 244, 231);
+    border-radius: 5px;
+    margin: 25px 200px 50px 200px;
+    padding-bottom: 30px;
+}
+
+.formulario label{
+    margin-bottom: 0.2em;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    background-color: var(--main-color);
+    /* padding: 2em; */
+    border-radius: 7px;
+}
+
+select, input{
+    padding: 6px;
+    font-size: 15px;
+    border-width: 1px;
+    border-color: #CCCCCC;
+    background-color: #FFFFFF;
+    color: #000000;
+    border-style: hidden;
+    border-radius: 7px;
+    box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+    margin: 5px;
+}
+
+.buttonCreate{
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	cursor:pointer;
+	color:#777777;
+	font-size:15px;
+	font-weight:bold;
+	padding:10px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+    margin-bottom: 15px;   
+}
+.buttonCreateDisabled{
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #cacaca 5%, #adadad 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #351919;
+	color:#777777;
+	font-size:15px;
+	font-weight:bold;
+	padding:10px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #888585;
+    margin-bottom: 15px;  
+}
+
+.button-Create:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+.button-Create:active {
+	top:1px;
+}
+
+.buttonDelete{
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	cursor:pointer;
+	color:#b30c0c;
+	font-size:13px;
+	font-weight:bold;
+	padding:5px 16px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+
+.selected {
+    display: flex;
+}
+
+.selectedItem {
+    margin: 0px 20px 20px 20px
+}
+
+.errors {
+    display: flex;
+    justify-content: space-between;
+}
+.err {
+    font-size: 20px;
+    color: firebrick;
+    margin: 2px 10px 2px 10px
+}

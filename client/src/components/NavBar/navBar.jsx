@@ -1,33 +1,22 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import navBar from "./navBar.module.css";
+import s from "./navBar.module.css";
 
-export default function NavBar(props) {
+export default function NavBar() {
   return (
-    <nav>
-      <ul>
-        <div>AppCountries</div>
+    <nav className={s.container}>
+      <ul className={s.searchBarUl}>
+        <div className={s.title}>AppCountries</div>
 
-        <div>
-          <NavLink activeStyle={{ fontWeight: "bold" }} to="/home">
-            <span>Pagina principal</span>
+        <div className={s.Links}>
+          <NavLink style={{ textDecoration: 'none', color: "black" }}to="/home">
+            <span>Home Page</span>
           </NavLink>
         </div>
 
-        <div>
-          <NavLink activeStyle={{ fontWeight: "bold" }} to="/addAct">
-            <span>Nueva actividad</span>
-          </NavLink>
-        </div>
-
-        <div>
-          <NavLink activeStyle={{ fontWeight: "bold" }} to="/activities">
-            <span>Actividades</span>
-          </NavLink>
-        </div>
-        <div>
-          <NavLink activeStyle={{ fontWeight: "bold" }} to="/about">
-            <span>Sobre mi</span>
+        <div className={s.Links}>
+          <NavLink style={{ textDecoration: 'none', color: "black" }}to="/addAct">
+            <span>Create Activity</span>
           </NavLink>
         </div>
       </ul>

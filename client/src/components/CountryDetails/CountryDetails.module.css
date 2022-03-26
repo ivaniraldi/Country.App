@@ -1,0 +1,31 @@
+.cardDet{
+    display: block;
+    position: relative;
+    left: 25%;
+    padding: 10px;
+    align-items: center;
+    background-color: rgb(253, 255, 234);
+    width: 800px;
+    border:6px solid rgb(236, 235, 219);
+    border-radius: 10px;
+    height: auto;    
+    
+}
+.flagDet{
+    position: relative;
+    height: 300px;
+    left: 20%;
+}
+.acts{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.acts1{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.acts2{
+    margin-left: 10%;
+}

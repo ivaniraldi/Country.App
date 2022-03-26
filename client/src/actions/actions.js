@@ -63,7 +63,7 @@ export function orderByActivity(type){
 export function getActividades(){
     return async function (dispatch) {
         try{
-            const request = await axios(`http://localhost:3001/activities`)
+            const request = await axios(`http://localhost:3001/activity`)
             dispatch({
                 type: "GET_ACTIVIDADES", 
                 payload: request.data

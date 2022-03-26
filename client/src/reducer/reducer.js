@@ -47,12 +47,17 @@ const reducer = (state = initialState, action) => {
       }
 
     case "ORDER_BY_ACTIVITY":
+      const status = state.countries
+      const mapedStatus = status.map((country) => {
+        return {
+          ...country,
+          activities: country.activities.map(e => e.name)
+        }
+      })
+      const filtered = action.payload === "all" ? status : mapedStatus.filter(e => e.activities.includes(action.payload))
       return {
         ...state,
-        filterCountries: state.countries.filter(country => {
-          const activities = country.activities.map((activity) => String(activity.id));
-          return activities.includes(action.payload);
-        })
+        filterCountries: filtered
       }
 
     case "ORDER_BY_AREA":
