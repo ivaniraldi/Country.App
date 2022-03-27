@@ -83,3 +83,11 @@ export function orderByArea(type){
         })
     }
 }
+export function orderByPopulation(type){
+    return async function(dispatch){        
+        dispatch({
+            type: 'ORDER_BY_AREA',
+            payload: type
+        })
+    }
+}

@@ -7,6 +7,7 @@ import {
   orderByName,
   orderByActivity,
   orderByArea,
+  orderByPopulation,
 } from "../../actions/actions";
 import s from "./Countries.module.css";
 import { NavLink } from "react-router-dom";
@@ -33,6 +34,10 @@ const Countries = () => {
   
   const orderCountriesArea = (type) => {
     dispatch(orderByArea(type));
+    setTrigger([...trigger, 1, dispatch]);
+  };
+  const orderCountriesPopulation = (type) => {
+    dispatch(orderByPopulation(type));
     setTrigger([...trigger, 1, dispatch]);
   };
   useEffect(() => {
@@ -90,6 +95,9 @@ const Countries = () => {
         <p>By Area</p>
         <button className={s.paged} onClick={() => orderCountriesArea("MAX")}>Max-Min</button>
         <button className={s.paged} onClick={() => orderCountriesArea("MIN")}>Min-Max</button>
+        <p>By Population</p>
+        <button className={s.paged} onClick={() => orderCountriesPopulation("MAX")}>Max-Min</button>
+        <button className={s.paged} onClick={() => orderCountriesPopulation("MIN")}>Min-Max</button>
       </div>
                                     {/* CARDS */}
       <div>

@@ -80,7 +80,20 @@ const reducer = (state = initialState, action) => {
 
         })
       }
-
+      case "ORDER_BY_POPULATION":
+        return {
+          ...state,
+          filterCountries: [...state.countries]?.sort((a, b) => {
+            if (a.population < b.population) {
+              return action.payload === "MAX" ? 1 : -1;
+            }
+            if (a.population > b.population) {
+              return action.payload === "MAX" ? -1 : 1;
+            }
+            return 0;
+  
+          })
+        }
 
     default:
       return {
