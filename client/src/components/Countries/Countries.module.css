@@ -1,63 +1,69 @@
-body{
-    background: rgb(254, 255, 237);
-    font-family:Georgia, 'Times New Roman', Times, serif;
+body {
+  background: rgb(255, 255, 255);
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.backCard {
+  background-color: transparent;
+}
+.card {
+  contain: content;
+  position: relative;
+  background-color: aliceblue;
+  margin: 5px;
+  margin-bottom: 50px;
+  left: 20px;
+  width: 320px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  height: 250px;
+  border: 2px solid rgb(165, 165, 165);
+}
+.card:hover {
+  background-color: rgb(226, 226, 226);
+}
+.imgCard {
+  width: 150px;
+  height: auto;
+  border: 6px solid rgb(236, 235, 219);
+}
+.filtersCont {
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: aliceblue;
+  background-color: #4d4d4d;
+  font-size: 20px;
+  bottom: 37px;
+}
+.left {
+  margin-left: 700px;
+  width: 50px;
+  background-color: #4d4d4d;
+  color: aliceblue;
+  box-shadow: inset;
+}
+.right {
+  width: 50px;
+  background-color: #4d4d4d;
+  color: aliceblue;
+  box-shadow: inset;
+  margin-right: 700px;
+}
+.page {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: x-large;
+  padding: 5px;
+}
+.paged {
+    background-color: #4d4d4d;
+    color: aliceblue;
+    font-size: large;
+    box-shadow: inset;
+}
+.paged:hover {
+  background-color: rgb(255, 255, 255);
+  color: black
+}
 
-}
-.backCard{
-    background-color: transparent;
-}
-.card{
-    contain: content;
-    position: relative;
-    margin:5px;
-    left: 20px;
-    width: 320px;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-
-    height: 250px;
-    border: 6px solid rgb(161, 160, 145);
-}
-.card:hover{
-    background-color: rgb(235, 232, 201);
-}
-.imgCard{
-    width: 150px;
-    height: auto;
-    border:6px solid rgb(236, 235, 219);
-}
-.filtersCont{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    color: rgb(0, 0, 0);
-    background-color: rgb(255, 254, 241);
-    font-size: 15px;
-    border:6px solid rgb(236, 235, 219);
-    border-radius: 10px;
-}
-.left{
-    margin-left: 700px;
-    width: 50px;
-    color: rgb(153, 130, 88);
-    border: 4px solid rgb(236, 235, 219);
-}
-.right{
-    width: 50px;
-    color: rgb(153, 130, 88);
-    border: 4px solid rgb(236, 235, 219);
-    margin-right: 700px;
-}
-.page{
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    font-size: x-large;
-    padding: 5px;
-}
-.paged{
-    width: 100px;
-    color: rgb(153, 130, 88);
-    border: 4px solid rgb(236, 235, 219);
-}
-.paged:hover{
-    background-color: rgb(254, 255, 240);
-}

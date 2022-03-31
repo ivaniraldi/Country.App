@@ -1,4 +1,4 @@
-function validate (value, target, setErrors) {
+function validate(value, target, setErrors) {
   if (target === 'name') {
     setErrors((prev) => ({ ...prev, name: null }))
     const nameformat = /^[a-zA-Z ]{3,15}$/
@@ -34,7 +34,7 @@ function validate (value, target, setErrors) {
   }
 }
 
-function validateCountries (value, setErrors) {
+function validateCountries(value, setErrors) {
   if (value.length === 0) setErrors((prev) => ({ ...prev, country: 'Must include a country' }))
   if (value.length > 0) setErrors((prev) => ({ ...prev, country: null }))
 }

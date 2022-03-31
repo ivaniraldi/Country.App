@@ -86,7 +86,15 @@ export function orderByArea(type){
 export function orderByPopulation(type){
     return async function(dispatch){        
         dispatch({
-            type: 'ORDER_BY_AREA',
+            type: 'ORDER_BY_POPULATION',
+            payload: type
+        })
+    }
+}
+export function topFive(type){
+    return async function(dispatch){
+        dispatch({
+            type: "TOP_FIVE",
             payload: type
         })
     }

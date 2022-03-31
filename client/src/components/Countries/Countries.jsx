@@ -8,17 +8,18 @@ import {
   orderByActivity,
   orderByArea,
   orderByPopulation,
+  topFive,
 } from "../../actions/actions";
 import s from "./Countries.module.css";
 import { NavLink } from "react-router-dom";
 import Navbar from "../NavBar/navBar";
-import SearchBar from "../Search/search";
 
 const Countries = () => {
-  const activities = useSelector((state) => state.actividades);
-  const [countriesToShow, setCountriesToShow] = useState([]);
   const dispatch = useDispatch();
+  const activities = useSelector((state) => state.actividades);
   const paises = useSelector((state) => state.filterCountries) || [];
+  
+  const [countriesToShow, setCountriesToShow] = useState([]);
   const [page, setPage] = useState(1);
   const countriesPerPage = 10;
   const lastCountrytoShow = page * countriesPerPage;
@@ -36,26 +37,37 @@ const Countries = () => {
     dispatch(orderByArea(type));
     setTrigger([...trigger, 1, dispatch]);
   };
+
   const orderCountriesPopulation = (type) => {
     dispatch(orderByPopulation(type));
     setTrigger([...trigger, 1, dispatch]);
   };
+  const topFiveOrder = (type) => {
+    dispatch(topFive(type));
+    setTrigger([...trigger, 1, dispatch]);
+  };
+
   useEffect(() => {
     dispatch(getActividades());
     dispatch(getCountries());
   }, [dispatch]);
+
   useEffect(() => {
     setPage(1);
   }, [paises]);
+
   useEffect(() => {
     setCountriesToShow(paises.slice(firstCountryToShow, lastCountrytoShow));
   }, [page, paises, firstCountryToShow, lastCountrytoShow]);
+
   function handleSelect(e) {
     dispatch(orderByContinent(e.target.value));
   }
+
   function handleSelectAct(e) {
     dispatch(orderByActivity(e.target.value));
   }
+
   const handleChangePag = (type) => {
     if (type === "-") {
       setPage(page === 1 ? totalPages : page - 1);
@@ -67,7 +79,6 @@ const Countries = () => {
   return (
     <div className={s.backCard}>
       <Navbar />
-      <SearchBar />
                                 {/* FILTERS */}
       <div className={s.filtersCont}>
         <p>By Name</p>
@@ -98,6 +109,7 @@ const Countries = () => {
         <p>By Population</p>
         <button className={s.paged} onClick={() => orderCountriesPopulation("MAX")}>Max-Min</button>
         <button className={s.paged} onClick={() => orderCountriesPopulation("MIN")}>Min-Max</button>
+        <button onClick={() => topFiveOrder("MAX")}>Top 5</button>
       </div>
                                     {/* CARDS */}
       <div>
@@ -108,12 +120,14 @@ const Countries = () => {
                 <div>
                   <h3 id="title">{country.name}</h3>
                   <p>{country.continent}</p>
+                  <p>{country.population} people.</p>
                   <img className={s.imgCard} src={country.flags} alt="Not Found" />
                 </div>
               </button>
             </NavLink>
           );
         })}
+
         {paises.length > countriesPerPage && (
           <div className={s.filtersCont}>
             <button className={s.left} onClick={() => handleChangePag("-")}>🢀</button>

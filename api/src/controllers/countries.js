@@ -111,4 +111,4 @@ async function getCountriesId(req, res, next) {
     }
 }
 
-module.exports = { getCountriesByName, getCountriesId, getAllCountries, getApiCountries, getCountries }
+module.exports = { getCountriesByName, getCountriesId, getAllCountries, getApiCountries, getCountries, }

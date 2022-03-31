@@ -34,6 +34,8 @@ const reducer = (state = initialState, action) => {
       }
     }
 
+
+
     case "ORDER_BY_CONTINENT":
       if(action.payload === "continent"){
         return{
@@ -93,6 +95,21 @@ const reducer = (state = initialState, action) => {
             return 0;
   
           })
+
+        }
+      case "TOP_FIVE":
+        return {
+          ...state,
+          filterCountries: [...state.countries]?.sort((a, b) => {
+            if (a.population < b.population) {
+              return action.payload === "MAX" ? 1 : -1;
+            }
+            if (a.population > b.population) {
+              return action.payload === "MAX" ? -1 : 1;
+            }
+            return 0;
+  
+          }).slice(0, 5)
         }
 
     default:
