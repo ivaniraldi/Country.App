@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export function getCountries(){
     return async function(dispatch){
-        const country = await axios.get('http://localhost:3001/countries')
+        const country = await axios.get('/countries')
         dispatch({
             type: 'GET_COUNTRIES',
             payload: country.data
@@ -14,7 +14,7 @@ export function getCountries(){
 
 export function getCountryByName(name){
     return async function(dispatch){
-        const country = await axios.get(`http://localhost:3001/countries/?name=${name}`)
+        const country = await axios.get(`/countries/?name=${name}`)
         dispatch({
             type: 'GET_COUNTRY_BY_NAME',
             payload: country.data
@@ -63,7 +63,7 @@ export function orderByActivity(type){
 export function getActividades(){
     return async function (dispatch) {
         try{
-            const request = await axios(`http://localhost:3001/activity`)
+            const request = await axios(`/activity`)
             dispatch({
                 type: "GET_ACTIVIDADES", 
                 payload: request.data
