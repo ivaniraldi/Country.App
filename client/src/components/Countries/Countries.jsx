@@ -42,10 +42,7 @@ const Countries = () => {
     dispatch(orderByPopulation(type));
     setTrigger([...trigger, 1, dispatch]);
   };
-  const topFiveOrder = (type) => {
-    dispatch(topFive(type));
-    setTrigger([...trigger, 1, dispatch]);
-  };
+
 
   useEffect(() => {
     dispatch(getActividades());
@@ -81,11 +78,11 @@ const Countries = () => {
       <Navbar />
                                 {/* FILTERS */}
       <div className={s.filtersCont}>
-        <p>By Name</p>
+        <p>Filter by Name</p>
         <button className={s.paged} onClick={() => orderCountries("ASC")}>A-Z</button>
         <button className={s.paged} onClick={() => orderCountries("DSC")}>Z-A</button>
         <p>By Continent</p>
-        <select name="continentOrder" onChange={handleSelect}>
+        <select className={s.paged} name="continentOrder" onChange={handleSelect}>
           <option value="continent">Continent</option>
           <option value="Africa">Africa</option>
           <option value="Americas">Americas</option>
@@ -94,7 +91,7 @@ const Countries = () => {
           <option value="Oceania">Oceania</option>
         </select>
         <p>By Activity</p>
-          <select onChange={e=> handleSelectAct(e)}>
+          <select className={s.paged} onChange={e=> handleSelectAct(e)}>
             <option value="all">All activities</option>
             {activities?.map((x) => (
               
@@ -109,7 +106,6 @@ const Countries = () => {
         <p>By Population</p>
         <button className={s.paged} onClick={() => orderCountriesPopulation("MAX")}>Max-Min</button>
         <button className={s.paged} onClick={() => orderCountriesPopulation("MIN")}>Min-Max</button>
-        <button onClick={() => topFiveOrder("MAX")}>Top 5</button>
       </div>
                                     {/* CARDS */}
       <div>
@@ -117,11 +113,11 @@ const Countries = () => {
           return (
             <NavLink to={`/home/countryDetail/${country.name}`}>
               <button className={s.card}>
+                  <img className={s.imgCard} src={country.flags} alt="Not Found" />
                 <div>
                   <h3 id="title">{country.name}</h3>
                   <p>{country.continent}</p>
                   <p>{country.population} people.</p>
-                  <img className={s.imgCard} src={country.flags} alt="Not Found" />
                 </div>
               </button>
             </NavLink>
@@ -129,7 +125,7 @@ const Countries = () => {
         })}
 
         {paises.length > countriesPerPage && (
-          <div className={s.filtersCont}>
+          <div className={s.filtersCont1}>
             <button className={s.left} onClick={() => handleChangePag("-")}>🢀</button>
             <span className={s.page}>{page}</span>
             <button className={s.right} onClick={() => handleChangePag("+")}>🢂</button>

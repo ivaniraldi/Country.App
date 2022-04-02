@@ -16,7 +16,7 @@ const sivityView = ({
         <form onSubmit={handlerSubmit}>
           <label>Activity Name </label>
 
-          <input
+          <input className={s.inputed}
             name="name"
             value={InputActivity.name}
             autoComplete="off"
@@ -24,9 +24,10 @@ const sivityView = ({
             required
           />
           <div>
-            <label> Duration</label>
+            <label> Duration (in days):</label>
 
             <input
+            className={s.inputed}
               name="duration"
               type="number"
               min="1"
@@ -36,9 +37,10 @@ const sivityView = ({
               required
             />
 
-            <label>Difficulty</label>
+            <label>Difficulty:</label>
 
             <select
+            className={s.inputed}
               name="difficulty"
               id="difficulty1"
               onChange={handlerOnChange}
@@ -46,17 +48,18 @@ const sivityView = ({
               required
             >
               <option value="" />
-              <option value={1}>1</option>
-              <option value={2}>2</option>
-              <option value={3}>3</option>
-              <option value={4}>4</option>
-              <option value={5}>5</option>
+              <option value={1}>1 (very easy)</option>
+              <option value={2}>2 (easy)</option>
+              <option value={3}>3 (medium)</option>
+              <option value={4}>4 (hard)</option>
+              <option value={5}>5 (very hard)</option>
             </select>
           </div>
 
-          <label>Season</label>
+          <label>Season:</label>
 
           <select
+          className={s.inputed}
             name="season"
             id="season1"
             onChange={handlerOnChange}
@@ -69,9 +72,10 @@ const sivityView = ({
             <option value="Summer">Summer</option>
           </select>
 
-          <label>Select Country</label>
+          <label>Select Country:</label>
 
           <select
+          className={s.inputed}
             name="country"
             id="country1"
             onChange={handlerOnChangeCountries}

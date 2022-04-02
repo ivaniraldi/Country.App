@@ -25,23 +25,25 @@ const CountryDetails = () => {
       <div className={s.cardDet}>
 
         <h1 className={s.acts}>{countries[0].name}</h1>
+        <div className={s.imgCont}>
         <img className={s.flagDet} src={countries[0].flags} alt="Not Found" />
+        </div>
         <div className={s.acts2}>
-          <h4>ID: {countries[0].id}</h4>
-          <h4>CONTINENT: {countries[0].continent}</h4>
-          <h4>SUBREGION: {countries[0].subregion}</h4>
-          <h4>CAPITAL: {countries[0].capital}</h4>
-          <h4>AREA: {countries[0].area} km²</h4>
-          <h4>POPULATION: {countries[0].population} people</h4>
+          <p>ID: {countries[0].id}</p>
+          <p>CONTINENT: {countries[0].continent}</p>
+          <p>SUBREGION: {countries[0].subregion}</p>
+          <p>CAPITAL: {countries[0].capital}</p>
+          <p>AREA: {countries[0].area} km²</p>
+          <p>POPULATION: {countries[0].population} people</p>
         </div>
 
-        <h1 className={s.acts}>ACTIVITIES:</h1>
         {countries[0].activities?.map((e) => (
           <div className={s.acts1}>
+            <h1 className={s.acts}>Activities:</h1>
             <h2>{e.name}</h2>
-            <h4>Duration: {e.duration} week/s</h4>
-            <h4>Difficulty: {e.difficulty} / 5</h4>
-            <h4>Season: {e.season}</h4>
+            <div>Duration: {e.duration} day/s</div>
+            <div>Difficulty: {e.difficulty} / 5</div>
+            <div>Season: {e.season}</div>
           </div>
         ))}
       </div>

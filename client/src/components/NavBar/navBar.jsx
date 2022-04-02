@@ -24,14 +24,17 @@ export default function NavBar() {
   return (
     <nav className={s.container}>
       <div className={s.searchBarUl}>
-        <div className={s.title}>AppCountries</div>
+          <NavLink to="/home"className={s.title}
+          style={{ textDecoration: "none", color: "black" }}>
+         AppCountries
+        </NavLink>
 
         
             <div className={s.searchBar}>
               <input
                 className={s.inputSearch}
                 type="text"
-                placeholder="Type a country..."
+                placeholder="Search for a country..."
                 onChange={(e) => handleChange(e)}
               ></input>
 
@@ -43,18 +46,10 @@ export default function NavBar() {
             </div>
 
 
-        <div className={s.Links}>
-          <NavLink
-            style={{ textDecoration: "none", color: "aliceblue", fontSize: 22 }}
-            to="/home"          >
-            <span>Home Page</span>
-          </NavLink>
-
-        </div>
 
         <div className={s.Links}>
           <NavLink
-            style={{ textDecoration: "none", color: "aliceblue", fontSize: 22 }}
+            style={{ textDecoration: "none", color: "black", fontSize: 22 }}
             to="/addAct"    >
             <span>Create Activity</span>
           </NavLink>

@@ -1,0 +1,11 @@
+{
+
+  "homepage": "https://ivaniraldi.github.io/Country.App",
+
+  "scripts": {
+
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
+  }
+
+  }

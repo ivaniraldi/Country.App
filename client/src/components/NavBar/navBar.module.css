@@ -2,7 +2,7 @@
     box-sizing: border-box;
     height: 60px;
     width: 100%;
-    background-color: #4d4d4d;
+    background-color: #ffffff;
     position: relative;
     color: aliceblue;    
 
@@ -19,7 +19,7 @@
    display: inline;
    float: right;
    position: relative;
-   bottom: 60px;
+   bottom: 55px;
    right: 20px;
    margin-left: 20px;
 }
@@ -32,7 +32,10 @@
     width: 300px;
     position: relative;
     bottom: 25px;
-    font-size: x-large;
+    border: 2px solid rgb(255, 255, 255);
+    font-size: large;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px rgb(144, 144, 144);
 }
 .buttonSearch{
     height: 36px;
@@ -40,7 +43,10 @@
     width: 180px;
     position: relative;
     bottom: 26px;
-    color: aliceblue;
-    background-color:#4d4d4d;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    color: rgb(87, 87, 87);
+    background-color:#ffffff;
+    box-shadow: 2px 2px 5px rgb(144, 144, 144);
     margin-left: 2px;
 }
