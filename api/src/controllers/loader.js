@@ -1,4 +1,5 @@
 const { default: axios } = require("axios")
+const { Activity } = require("../db")
 
 
 const getCountries1 = async (Country) => {
@@ -23,7 +24,8 @@ const getCountries1 = async (Country) => {
           where: {
             name: addCountry.name
           },
-          defaults: addCountry
+          defaults: addCountry,
+          include: Activity
         })
 
         // console.log('▄'.green, addCountry.name, 'Cargado correctamente'.green)
