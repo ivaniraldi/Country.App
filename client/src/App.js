@@ -13,7 +13,7 @@ function App() {
           <Route path="/home" element={<Countries/>}/>
           <Route path="/addAct" element={<CreateActivity/>} />
           <Route path="/home/countryDetail/:name" element={<CountryDetails/>}/>
-          <Route path="/Country.App" element={<LandingPage/>} />
+          <Route path="/" element={<LandingPage/>} />
     </Routes>
     </>
   );
