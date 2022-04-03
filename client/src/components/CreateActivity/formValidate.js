@@ -39,4 +39,4 @@ function validateCountries(value, setErrors) {
   if (value.length > 0) setErrors((prev) => ({ ...prev, country: null }))
 }
 
-module.exports = { validate, validateCountries }
+export { validate, validateCountries }
