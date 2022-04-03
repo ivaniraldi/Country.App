@@ -33,6 +33,7 @@ const AddActivity = () => {
   }
 
   function handlerOnChangeCountries(e) {
+    const res = []
     const aux = e.target.value.split(" ");
 
     let includeCountry = false;
@@ -66,7 +67,7 @@ const AddActivity = () => {
       season: `${InputActivity.season}`,
       countryName: countriesRes,
     };
-    const response = await axios.post("http://localhost:3001/activity", res);
+    const response = await axios.post("/activity", res);
 
     if (typeof response.data === "string") {
       window.alert(response.data);

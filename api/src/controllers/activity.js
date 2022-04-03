@@ -1,3 +1,4 @@
+const { default: axios } = require("axios");
 const { Country, Activity } = require("../db")
 
 async function createActivity(req, res, next){
@@ -33,4 +34,12 @@ async function getActivites(req, res) {
         res.send(error)
     }
 }
-module.exports = { createActivity, getActivites }
+async function getActivites1(req, res) {
+    try {
+        const actividades= await axios.get("http://localhost:3001/activity")
+        return actividades.data
+    } catch (error) {
+        
+    }
+}
+module.exports = { createActivity, getActivites, getActivites1 }
