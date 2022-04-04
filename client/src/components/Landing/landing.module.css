@@ -22,15 +22,6 @@
   bottom: 350px;
   left: 800px;
 }
-.Landing {
-  background-color: #dcdcdc;
-  width: 100%;
-  height: auto;
-  min-width: 1024px;
-  opacity: 100%;
-  min-height: 100%;
-  position: fixed;
-}
 .Subt {
   max-width: 600px;
   margin-top: 20px;
@@ -38,7 +29,6 @@
   font-size: 35px;
   color: rgb(69, 69, 69);
   padding: 5px;
-
 }
 .HeaderC {
   width: 100%;
@@ -54,8 +44,4 @@
   font-size: 50px;
   color: rgb(0, 0, 0);
 }
-.stilizer{
-  background-color: aqua;
-  height: 23px;
-  width: 50px;
-} 
+
