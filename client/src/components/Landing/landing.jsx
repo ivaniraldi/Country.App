@@ -1,27 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import landing from "./landing.module.css";
+import NavBar from "../NavBar/navBar"
 import img from "./Travel.png"
 
 export default function LandingPage() {
+  let landing = ""
   return (
     <>
-    <div className={landing.Landing}>
-      <div className={landing.HeaderC}>
-      <h1 className={landing.Header}> AppCountries </h1>
+    <div className="container" >
+    <div className="container" style={{marginTop:"100px"}}>
+      <div className="row">
+        <div className="col">
+      <h1 > touristicGate🚀 </h1>
+      Application created to search, filter and view detailed information of
+        countries. Create your tourist activities and share them with the world!
+        </div>
+      <div className="col">
+      <div className="container">
+      <img src={img} style={{width:"400px"}} alt="Not found"></img>
       </div>
 
-      <div className={landing.Subt}>
-        Aplicación creada para buscar, filtrar y ver información detallada de
-        países. ¡Crea tus actividades turísticas y compártelas con el mundo!
       </div>
 
       <Link to="/home">
-        <button className={landing.btnEnter}> Entrar al sitio </button>
+        <button className="btn btn-dark"> Let's get started! </button>
       </Link>
-      <div className={landing.imgContainer}>
-      <img src={img} className={landing.imageT} alt="Not found"></img>
       </div>
+    </div>
     </div>
     </>
   );

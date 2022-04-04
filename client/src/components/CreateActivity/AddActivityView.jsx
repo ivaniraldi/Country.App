@@ -1,33 +1,44 @@
+
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getCountries } from "../../actions/actions";
 import s from "./AddActivity.module.css";
 
-const sivityView = ({
+const SivityView = ({
   errors,
-  countries,
   handlerOnChange,
+  countries,
   handlerOnChangeCountries,
   handlerSubmit,
   RemoveCountry,
   InputActivity,
   InputCountries,
 }) => {
+  const dispatch=useDispatch()
+  useEffect(() => {
+    dispatch(getCountries());
+  }, [dispatch]);
   return (
-    <div className={s.formulario}>
+    <div className="container">
       <div>
-        <form onSubmit={handlerSubmit}>
-          <label>Activity Name </label>
+        <form onSubmit={handlerSubmit} className="row g-3">
+          <div className="col-12">
+          <label className="form-label">Activity Name </label>
 
-          <input className={s.inputed}
+          <input
+            className="form-control"
             name="name"
             value={InputActivity.name}
             autoComplete="off"
             onChange={handlerOnChange}
             required
           />
-          <div>
-            <label> Duration (in days):</label>
+          </div>
+          <div className="col-md-6">
+            <label className="form-label"> Duration (in days):</label>
 
             <input
-            className={s.inputed}
+              className="form-control"
               name="duration"
               type="number"
               min="1"
@@ -36,11 +47,12 @@ const sivityView = ({
               onChange={handlerOnChange}
               required
             />
-
-            <label>Difficulty:</label>
+            </div >
+            <div className="col-md-6">
+            <label className="form-label">Difficulty:</label>
 
             <select
-            className={s.inputed}
+              className="form-control"
               name="difficulty"
               id="difficulty1"
               onChange={handlerOnChange}
@@ -54,12 +66,12 @@ const sivityView = ({
               <option value={4}>4 (hard)</option>
               <option value={5}>5 (very hard)</option>
             </select>
-          </div>
-
-          <label>Season:</label>
+          </div >
+          <div className="col-md-6">
+          <label className="form-label">Season:</label>
 
           <select
-          className={s.inputed}
+            className="form-control"
             name="season"
             id="season1"
             onChange={handlerOnChange}
@@ -71,11 +83,12 @@ const sivityView = ({
             <option value="Spring">Spring</option>
             <option value="Summer">Summer</option>
           </select>
-
-          <label>Select Country:</label>
+          </div>
+          <div className="col-md-6">
+          <label className="form-label">Select Country:</label>
 
           <select
-          className={s.inputed}
+            className="form-select"
             name="country"
             id="country1"
             onChange={handlerOnChangeCountries}
@@ -89,34 +102,17 @@ const sivityView = ({
                 </option>
               ))}
           </select>
+          </div>
 
-          {InputActivity.changed &&
-          !errors.name &&
-          !errors.country &&
-          !errors.difficulty &&
-          !errors.season &&
-          !errors.duration ? (
-            <button className={s.buttonCreate} type="submit">
-              Create
-            </button>
-          ) : (
-            <button
-              className={s.buttonCreateDisabled}
-              disabled
-              type="submit"
-            >
-              Create
-            </button>
-          )}
-
-          <div className={s.selected}>
+          <div className="col-12">
             {InputCountries
               ? InputCountries.map((el) => (
-                  <p key={el.id} className={s.selectedItem}>
+                  <p key={el.id} className="btn btn-light">
                     {" "}
                     {el.name}
                     <button
-                      className={s.buttonDelete}
+                      className="btn btn-danger"
+                      style={{marginLeft:"10px"}}
                       type="button"
                       onClick={() => RemoveCountry(el.id)}
                     >
@@ -126,24 +122,40 @@ const sivityView = ({
                 ))
               : null}
           </div>
+          {InputActivity.changed &&
+          !errors.name &&
+          !errors.country &&
+          !errors.difficulty &&
+          !errors.season &&
+          !errors.duration ? (
+            <div className="col-12">
+            <button className="btn btn-secondary btn-lg" type="submit">
+              Create
+            </button>
+            </div>
+          ) : (
+            <div className="col-12">
+            <button className="btn btn-secondary btn-lg" disabled type="submit">
+              Create
+            </button>
+            </div>
+          )}
+
         </form>
-      </div>
       <div className={s.errors} />
       {errors.country && InputActivity.changed ? (
         <span className={s.err}> -{errors.country}- </span>
       ) : null}
       {errors.name && <span className={s.err}> -{errors.name}- </span>}
-      {errors.duration && (
-        <span className={s.err}>-{errors.duration}-</span>
-      )}
-      {errors.season ? (
-        <span className={s.err}>-{errors.season}-</span>
-      ) : null}
+      {errors.duration && <span className={s.err}>-{errors.duration}-</span>}
+      {errors.season ? <span className={s.err}>-{errors.season}-</span> : null}
       {errors.difficulty ? (
         <span className={s.err}> {errors.difficulty} </span>
       ) : null}
     </div>
+      </div>
+      
   );
 };
 
-export default sivityView;
+export default SivityView;

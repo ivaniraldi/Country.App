@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { getCountryByName} from "../../actions/actions";
-import s from "./navBar.module.css";
+import { getCountryByName } from "../../actions/actions";
 
 export default function NavBar() {
+  let s = "";
   const [name, setName] = useState("");
   const dispatch = useDispatch();
 
@@ -15,49 +14,17 @@ export default function NavBar() {
   }
 
 
-  function onSearch(e) {
-    e.preventDefault();
-    dispatch(getCountryByName(name));
-    setName("");
-  }
 
   return (
-    <nav className={s.container}>
-      <div className={s.searchBarUl}>
-          <NavLink to="/home"className={s.title}
-          style={{ textDecoration: "none", color: "black" }}>
-         AppCountries
-        </NavLink>
-
-        
-            <div className={s.searchBar}>
-              <input
-                className={s.inputSearch}
-                type="text"
-                placeholder="Search for a country..."
-                onChange={(e) => handleChange(e)}
-              ></input>
-
-              <button
-                className={s.buttonSearch}
-                type="submit"
-                onClick={(e) => onSearch(e)}
-              >Search Country</button>
-            </div>
-
-
-
-        <div className={s.Links}>
-          <NavLink
-            style={{ textDecoration: "none", color: "black", fontSize: 22 }}
-            to="/addAct"    >
-            <span>Create Activity</span>
-          </NavLink>
-          <div>
-
-          </div>
-        </div>
-      </div>
-    </nav>
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/home">touristicGate🚀</a>
+    <a class="navbar-brand" href="/addAct">Create an activity</a>
+    <form class="d-flex">
+      <input onChange={e=>handleChange(e)} class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
   );
 }

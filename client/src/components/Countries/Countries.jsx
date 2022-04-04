@@ -18,7 +18,7 @@ const Countries = () => {
   const dispatch = useDispatch();
   const activities = useSelector((state) => state.actividades);
   const paises = useSelector((state) => state.filterCountries) || [];
-  
+
   const [countriesToShow, setCountriesToShow] = useState([]);
   const [page, setPage] = useState(1);
   const countriesPerPage = 10;
@@ -27,12 +27,11 @@ const Countries = () => {
   const totalPages = Math.ceil(paises.length / countriesPerPage);
   const [trigger, setTrigger] = useState([]);
 
-  
   const orderCountries = (type) => {
     dispatch(orderByName(type));
     setTrigger([...trigger, 1, dispatch]);
   };
-  
+
   const orderCountriesArea = (type) => {
     dispatch(orderByArea(type));
     setTrigger([...trigger, 1, dispatch]);
@@ -42,7 +41,6 @@ const Countries = () => {
     dispatch(orderByPopulation(type));
     setTrigger([...trigger, 1, dispatch]);
   };
-
 
   useEffect(() => {
     dispatch(getActividades());
@@ -76,59 +74,114 @@ const Countries = () => {
   return (
     <div className={s.backCard}>
       <Navbar />
-                                {/* FILTERS */}
-      <div className={s.filtersCont}>
-        <p>Filter by Name</p>
-        <button className={s.paged} onClick={() => orderCountries("ASC")}>A-Z</button>
-        <button className={s.paged} onClick={() => orderCountries("DSC")}>Z-A</button>
-        <p>By Continent</p>
-        <select className={s.paged} name="continentOrder" onChange={handleSelect}>
-          <option value="continent">Continent</option>
-          <option value="Africa">Africa</option>
-          <option value="Americas">Americas</option>
-          <option value="Asia">Asia</option>
-          <option value="Europe">Europe</option>
-          <option value="Oceania">Oceania</option>
-        </select>
-        <p>By Activity</p>
-          <select className={s.paged} onChange={e=> handleSelectAct(e)}>
+      {/* FILTERS */}
+      <div className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+          <p className="navbar-text">Filter by Name</p>
+          <button
+            className="btn btn-sm btn-outline-secondary"
+            onClick={() => orderCountries("ASC")}
+          >
+            A-Z
+          </button>
+          <button
+            className="btn btn-sm btn-outline-secondary"
+            onClick={() => orderCountries("DSC")}
+          >
+            Z-A
+          </button>
+          <p className="navbar-text">By Continent</p>
+          <select
+            className="btn btn-sm btn-outline-secondary"
+            name="continentOrder"
+            onChange={handleSelect}
+          >
+            <option value="continent">Continent</option>
+            <option value="Africa">Africa</option>
+            <option value="Americas">Americas</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europe</option>
+            <option value="Oceania">Oceania</option>
+          </select>
+          <p className="navbar-text">By Activity</p>
+          <select
+            className="btn btn-sm btn-outline-secondary"
+            onChange={(e) => handleSelectAct(e)}
+          >
             <option value="all">All activities</option>
             {activities?.map((x) => (
-              
               <option key={x.id} value={x.name}>
                 {x.name}
               </option>
             ))}
           </select>
-        <p>By Area</p>
-        <button className={s.paged} onClick={() => orderCountriesArea("MAX")}>Max-Min</button>
-        <button className={s.paged} onClick={() => orderCountriesArea("MIN")}>Min-Max</button>
-        <p>By Population</p>
-        <button className={s.paged} onClick={() => orderCountriesPopulation("MAX")}>Max-Min</button>
-        <button className={s.paged} onClick={() => orderCountriesPopulation("MIN")}>Min-Max</button>
+          <p className="navbar-text">By Area</p>
+          <button
+            className="btn btn-sm btn-outline-secondary"
+            onClick={() => orderCountriesArea("MAX")}
+          >
+            Max-Min
+          </button>
+          <button
+            className="btn btn-sm btn-outline-secondary"
+            onClick={() => orderCountriesArea("MIN")}
+          >
+            Min-Max
+          </button>
+          <p className="navbar-text">By Population</p>
+          <button
+            className="btn btn-sm btn-outline-secondary"
+            onClick={() => orderCountriesPopulation("MAX")}
+          >
+            Max-Min
+          </button>
+          <button
+            className="btn btn-sm btn-outline-secondary"
+            onClick={() => orderCountriesPopulation("MIN")}
+          >
+            Min-Max
+          </button>
+        </div>
       </div>
-                                    {/* CARDS */}
+      {/* CARDS */}
       <div>
-        {countriesToShow.map((country) => {
-          return (
-            <NavLink to={`/home/countryDetail/${country.name}`}>
-              <button className={s.card}>
-                  <img className={s.imgCard} src={country.flags} alt="Not Found" />
-                <div>
-                  <h3 id="title">{country.name}</h3>
-                  <p>{country.continent}</p>
-                  <p>{country.population} people.</p>
-                </div>
-              </button>
-            </NavLink>
-          );
-        })}
-
+        <div className="container">
+          <div className="row">
+            {countriesToShow.map((country) => {
+              return (
+                <a
+                  className="card"
+                  href={`/home/countryDetail/${country.name}`}
+                  style={{ textDecoration: "none", width:"13rem", margin:"10px", color:"black"}}
+                >
+                  <img
+                    className="card-img-top"
+                    src={country.flags}
+                    alt="Not Found"
+                    style={{marginTop:"10px"}}
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title" id="title">{country.name}</h5>
+                    <p className="card-text">{country.continent}</p>
+                    <p className="card-text">{country.population} people.</p>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+        
         {paises.length > countriesPerPage && (
-          <div className={s.filtersCont1}>
-            <button className={s.left} onClick={() => handleChangePag("-")}>🢀</button>
+          <div className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="container">
+            <button className="btn btn-outline-secondary" onClick={() => handleChangePag("-")}>
+              🢀
+            </button>
             <span className={s.page}>{page}</span>
-            <button className={s.right} onClick={() => handleChangePag("+")}>🢂</button>
+            <button className="btn btn-outline-secondary" onClick={() => handleChangePag("+")}>
+              🢂
+            </button>
+            </div>
           </div>
         )}
       </div>

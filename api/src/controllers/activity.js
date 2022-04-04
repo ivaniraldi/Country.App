@@ -17,7 +17,7 @@ async function createActivity(req, res, next){
             await newActivity.addCountry(activityCountry)
         });
          
-        return res.json("La actividad se ha creado correctamente")
+        return res.json("Activity succefully created.")
     } catch (err) {
         next(err)    
     }

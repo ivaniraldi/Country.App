@@ -17,35 +17,41 @@ const CountryDetails = () => {
 
   if (!countries) {
     return <h1>Please wait</h1>;
-  };
+  }
 
   return (
     <div className="countrydetails">
       <NavBar />
-      <div className={s.cardDet}>
-
-        <h1 className={s.acts}>{countries[0].name}</h1>
-        <div className={s.imgCont}>
-        <img className={s.flagDet} src={countries[0].flags} alt="Not Found" />
-        </div>
-        <div className={s.acts2}>
-          <p>ID: {countries[0].id}</p>
-          <p>CONTINENT: {countries[0].continent}</p>
-          <p>SUBREGION: {countries[0].subregion}</p>
-          <p>CAPITAL: {countries[0].capital}</p>
-          <p>AREA: {countries[0].area} km²</p>
-          <p>POPULATION: {countries[0].population} people</p>
-        </div>
-
-        {countries[0].activities?.map((e) => (
-          <div className={s.acts1}>
-            <h1 className={s.acts}>Activities:</h1>
-            <h2>{e.name}</h2>
-            <div>Duration: {e.duration} day/s</div>
-            <div>Difficulty: {e.difficulty} / 5</div>
-            <div>Season: {e.season}</div>
+      <div className="container">
+        <div className="card" style={{ textDecoration: "none", width:"35rem", margin:"10px", color:"black"}}>
+            <img
+              className="card-img-top"
+              src={countries[0].flags}
+              alt="Not Found"
+              />
+              <div className="card-body">
+          <h1 className="card-title">{countries[0].name}</h1>
+          <div className="card-body">
           </div>
-        ))}
+          <div className={s.acts2}>
+            <p className="card-text">ID: {countries[0].id}</p>
+            <p className="card-text">CONTINENT: {countries[0].continent}</p>
+            <p className="card-text" >SUBREGION: {countries[0].subregion}</p>
+            <p className="card-text">CAPITAL: {countries[0].capital}</p>
+            <p className="card-text">AREA: {countries[0].area} km²</p>
+            <p className="card-text">POPULATION: {countries[0].population} people</p>
+          {countries[0].activities?.map((e) => (
+            <div className="container">
+              <h4 className="card-title">Activity:</h4>
+              <h5>{e.name}</h5>
+              <div>Duration: {e.duration} day/s</div>
+              <div>Difficulty: {e.difficulty} / 5</div>
+              <div>Season: {e.season}</div>
+            </div>
+          ))}
+          </div>
+          </div>
+        </div>
       </div>
     </div>
   );

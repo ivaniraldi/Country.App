@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import NavBar from "../NavBar/navBar";
-
+import swal from 'sweetalert';
 import AddActivityView from "./AddActivityView";
 
 const { validate, validateCountries } = require("./formValidate.js");
@@ -16,7 +16,7 @@ const AddActivity = () => {
     changed: false,
   });
   const [errors, setErrors] = useState({});
-  const countries = useSelector((state) => state.countries);
+  const countries = useSelector((state) => state.filterCountries);
   const [InputCountries, setInputCountries] = useState([]);
 
   useEffect(() => {
@@ -70,9 +70,9 @@ const AddActivity = () => {
     const response = await axios.post("/activity", res);
 
     if (typeof response.data === "string") {
-      window.alert(response.data);
+      swal(response.data);
     } else {
-      window.alert("ACTIVIDAD CREADA");
+      swal("Activity created.");
       setInputActivity({
         name: "",
         difficulty: "",
