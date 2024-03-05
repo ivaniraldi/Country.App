@@ -2,14 +2,12 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const {
-  POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_HOST, POSTGRES_DATABASE, POSTGRES_URL
-} = process.env;
 
-let sequelize = new Sequelize({
+
+const sequelize = new Sequelize({
   dialect: 'postgres',
   dialectModule: require('pg'),
-  connectionString: process.env.POSTGRES_URL, // Set DATABASE_URL in Vercel environment variables
+  connectionString: process.env.POSTGRES_URL,
   logging: false,
   native: false,
   pool: {
