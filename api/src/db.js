@@ -7,7 +7,7 @@ const path = require('path');
 const sequelize = new Sequelize({
   dialect: 'postgres',
   dialectModule: require('pg'),
-  connectionString: process.env.POSTGRES_URL,
+  connectionString: "postgres://default:MyaSnDKNVi81@ep-sweet-wave-a4xvqiis-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require",
   logging: false,
   native: false,
   pool: {
