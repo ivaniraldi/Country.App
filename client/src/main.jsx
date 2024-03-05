@@ -8,7 +8,8 @@ import { Provider } from 'react-redux';
 import axios from "axios"
 import { store } from './store/store.js';
 
-axios.defaults.baseURL = "http://localhost:3001";
+
+axios.defaults.baseURL = import.meta.env.API_URL || "https://touristic-gate-api.vercel.app";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
