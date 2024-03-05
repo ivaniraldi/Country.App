@@ -3,38 +3,28 @@ const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
-  POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_HOST, POSTGRES_DATABASE
+  POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_HOST, POSTGRES_DATABASE, POSTGRES_URL
 } = process.env;
 
-let sequelize =
-  process.env.NODE_ENV === "production"
-    ? new Sequelize({
-        dialectModule: require('pg'),
-        database: POSTGRES_DATABASE, 
-        dialect: "postgres",
-        host: POSTGRES_HOST,
-        username: POSTGRES_USER,
-        password: POSTGRES_PASSWORD,
-        pool: {
-          max: 3,
-          min: 1,
-          idle: 10000,
-        },
-        dialectOptions: {
-          ssl: {
-            require: true,
-            // Ref.: https://github.com/brianc/node-postgres/issues/2009
-            rejectUnauthorized: false,
-          },
-          keepAlive: true,
-        },
-        ssl: true,
-      })
-    : new Sequelize( 
-      
-        `postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}/verceldb?ssl=true`,
-        { logging: false, native: false, dialectModule: require('pg')},
-      );
+let sequelize = new Sequelize({
+  dialect: 'postgres',
+  dialectModule: require('pg'),
+  connectionString: process.env.POSTGRES_URL, // Set DATABASE_URL in Vercel environment variables
+  logging: false,
+  native: false,
+  pool: {
+    max: 3,
+    min: 1,
+    idle: 10000,
+  },
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+    keepAlive: true,
+  },
+});
 // const sequelize = new Sequelize(`postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}/countries`, {
 //   logging: false, // set to console.log to see the raw SQL queries
 //   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
