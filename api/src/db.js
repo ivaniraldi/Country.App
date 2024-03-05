@@ -4,10 +4,9 @@ const fs = require('fs');
 const path = require('path');
 
 
-const sequelize = new Sequelize({
+const sequelize = new Sequelize(process.env.POSTGRES_URL,{
   dialect: 'postgres',
   dialectModule: require('pg'),
-  connectionString: process.env.POSTGRES_URL,
   logging: false,
   native: false,
   pool: {
