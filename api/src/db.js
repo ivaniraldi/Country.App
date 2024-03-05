@@ -9,6 +9,7 @@ const {
 let sequelize =
   process.env.NODE_ENV === "production"
     ? new Sequelize({
+        dialectModule: require('pg'),
         database: POSTGRES_DATABASE, 
         dialect: "postgres",
         host: POSTGRES_HOST,
@@ -31,8 +32,9 @@ let sequelize =
         ssl: true,
       })
     : new Sequelize( 
+      
         `postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}/verceldb?ssl=true`,
-        { logging: false, native: false }
+        { logging: false, native: false, dialectModule: require('pg')},
       );
 // const sequelize = new Sequelize(`postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}/countries`, {
 //   logging: false, // set to console.log to see the raw SQL queries
