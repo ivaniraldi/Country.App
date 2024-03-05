@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -L",
-    "test": "mocha -w ./tests/**/*.spec.js"
+    "test": "mocha -w ./tests/**/*.spec.js",
+    "build": "npm install"
   },
   "author": "Henry",
   "license": "ISC",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "pg": "^8.5.1",
     "mocha": "^8.2.1",
     "supertest": "^6.0.1",
     "supertest-session": "^4.1.0"
