@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import s from "./CountryDetails.module.css";
 import { getCountryByName } from "../../actions/actions";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,8 +22,8 @@ const CountryDetails = () => {
   return (
     <div className="countrydetails">
       <NavBar />
-      <div className="container">
-        <div className="card" style={{ textDecoration: "none", width:"35rem", margin:"10px", color:"black"}}>
+      <div className="container-fluid d-flex justify-content-center mb-4">
+        <div className="card" style={{ textDecoration: "none", width:"30rem", margin:"10px", color:"black"}}>
             <img
               className="card-img-top"
               src={countries[0].flags}
@@ -40,8 +40,8 @@ const CountryDetails = () => {
             <p className="card-text">CAPITAL: {countries[0].capital}</p>
             <p className="card-text">AREA: {countries[0].area} km²</p>
             <p className="card-text">POPULATION: {countries[0].population} people</p>
-          {countries[0].activities?.map((e) => (
-            <div className="container">
+          {countries[0].activities?.map((e, i) => (
+            <div className="container" key={i}>
               <h4 className="card-title">Activity:</h4>
               <h5>{e.name}</h5>
               <div>Duration: {e.duration} day/s</div>

@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getCountries } from "../../actions/actions";
-import s from "./AddActivity.module.css";
+
 
 const SivityView = ({
   errors,
@@ -96,15 +97,15 @@ const SivityView = ({
           >
             <option value="" />
             {countries &&
-              countries.map((el) => (
-                <option value={el.code + " " + el.name} key={el.code}>
+              countries.map((el, i) => (
+                <option key={i} value={el.code + " " + el.name}>
                   {el.name}
                 </option>
               ))}
           </select>
           </div>
 
-          <div className="col-12">
+          <div className="col-12 d-flex justify-content-center mt-3">
             {InputCountries
               ? InputCountries.map((el) => (
                   <p key={el.id} className="btn btn-light">
@@ -128,29 +129,29 @@ const SivityView = ({
           !errors.difficulty &&
           !errors.season &&
           !errors.duration ? (
-            <div className="col-12">
-            <button className="btn btn-secondary btn-lg" type="submit">
+            <div className="col-12 d-flex justify-content-center">
+            <button className="btn btn-success btn-lg d-flex justify-content-center" type="submit">
               Create
             </button>
             </div>
           ) : (
-            <div className="col-12">
-            <button className="btn btn-secondary btn-lg" disabled type="submit">
+            <div className="col-12 d-flex justify-content-center">
+            <button className="btn btn-secondary btn-lg d-flex justify-content-center" disabled type="submit">
               Create
             </button>
             </div>
           )}
 
         </form>
-      <div className={s.errors} />
+      <div  />
       {errors.country && InputActivity.changed ? (
-        <span className={s.err}> -{errors.country}- </span>
+        <span> -{errors.country}- </span>
       ) : null}
-      {errors.name && <span className={s.err}> -{errors.name}- </span>}
-      {errors.duration && <span className={s.err}>-{errors.duration}-</span>}
-      {errors.season ? <span className={s.err}>-{errors.season}-</span> : null}
+      {errors.name && <span> -{errors.name}- </span>}
+      {errors.duration && <span>-{errors.duration}-</span>}
+      {errors.season ? <span>-{errors.season}-</span> : null}
       {errors.difficulty ? (
-        <span className={s.err}> {errors.difficulty} </span>
+        <span> {errors.difficulty} </span>
       ) : null}
     </div>
       </div>

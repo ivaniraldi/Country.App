@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getCountryByName } from "../../actions/actions";
 
 export default function NavBar() {
-  let s = "";
   const [name, setName] = useState("");
   const dispatch = useDispatch();
 
@@ -16,13 +15,13 @@ export default function NavBar() {
 
 
   return (
-<nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/home">touristicGate🚀</a>
-    <a class="navbar-brand" href="/addAct">Create an activity</a>
-    <form class="d-flex">
-      <input onChange={e=>handleChange(e)} class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-      <button class="btn btn-outline-success" type="submit">Search</button>
+<nav className="navbar navbar-light bg-light">
+  <div className="container-fluid">
+    <a className="navbar-brand" href="/home">touristicGate🚀</a>
+    <a className="btn btn-success" href="/addAct">Create an activity</a>
+    <form className="d-flex">
+      <input onChange={e=>handleChange(e)} className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+      <button className="btn btn-outline-success" type="submit">Search</button>
     </form>
   </div>
 </nav>

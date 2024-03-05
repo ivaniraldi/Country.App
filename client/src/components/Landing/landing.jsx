@@ -1,10 +1,7 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import NavBar from "../NavBar/navBar"
 import img from "./Travel.png"
 
 export default function LandingPage() {
-  let landing = ""
   return (
     <>
     <div className="container" >
@@ -23,7 +20,7 @@ export default function LandingPage() {
       </div>
 
       <Link to="/home">
-        <button className="btn btn-dark"> Let's get started! </button>
+        <button className="btn btn-dark"> Let´s get started! </button>
       </Link>
       </div>
     </div>

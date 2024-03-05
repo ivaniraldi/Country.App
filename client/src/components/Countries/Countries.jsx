@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getCountries,
@@ -8,10 +9,8 @@ import {
   orderByActivity,
   orderByArea,
   orderByPopulation,
-  topFive,
 } from "../../actions/actions";
 import s from "./Countries.module.css";
-import { NavLink } from "react-router-dom";
 import Navbar from "../NavBar/navBar";
 
 const Countries = () => {
@@ -25,22 +24,23 @@ const Countries = () => {
   const lastCountrytoShow = page * countriesPerPage;
   const firstCountryToShow = lastCountrytoShow - countriesPerPage;
   const totalPages = Math.ceil(paises.length / countriesPerPage);
-  const [trigger, setTrigger] = useState([]);
+  const [trigger, setTrigger] = useState(Date.now()); // Use a timestamp as the trigger
 
   const orderCountries = (type) => {
     dispatch(orderByName(type));
-    setTrigger([...trigger, 1, dispatch]);
+    setTrigger(Date.now()); // Update the trigger with a new timestamp
   };
 
   const orderCountriesArea = (type) => {
     dispatch(orderByArea(type));
-    setTrigger([...trigger, 1, dispatch]);
+    setTrigger(Date.now());
   };
 
   const orderCountriesPopulation = (type) => {
     dispatch(orderByPopulation(type));
-    setTrigger([...trigger, 1, dispatch]);
+    setTrigger(Date.now());
   };
+
 
   useEffect(() => {
     dispatch(getActividades());
@@ -53,7 +53,7 @@ const Countries = () => {
 
   useEffect(() => {
     setCountriesToShow(paises.slice(firstCountryToShow, lastCountrytoShow));
-  }, [page, paises, firstCountryToShow, lastCountrytoShow]);
+  }, [trigger, page, paises, firstCountryToShow, lastCountrytoShow]);
 
   function handleSelect(e) {
     dispatch(orderByContinent(e.target.value));
@@ -77,7 +77,7 @@ const Countries = () => {
       {/* FILTERS */}
       <div className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <p className="navbar-text">Filter by Name</p>
+          <p className="navbar-text mt-3">Filter by Name</p>
           <button
             className="btn btn-sm btn-outline-secondary"
             onClick={() => orderCountries("ASC")}
@@ -90,7 +90,7 @@ const Countries = () => {
           >
             Z-A
           </button>
-          <p className="navbar-text">By Continent</p>
+          <p className="navbar-text mt-3">By Continent</p>
           <select
             className="btn btn-sm btn-outline-secondary"
             name="continentOrder"
@@ -103,7 +103,7 @@ const Countries = () => {
             <option value="Europe">Europe</option>
             <option value="Oceania">Oceania</option>
           </select>
-          <p className="navbar-text">By Activity</p>
+          <p className="navbar-text mt-3">By Activity</p>
           <select
             className="btn btn-sm btn-outline-secondary"
             onChange={(e) => handleSelectAct(e)}
@@ -115,7 +115,7 @@ const Countries = () => {
               </option>
             ))}
           </select>
-          <p className="navbar-text">By Area</p>
+          <p className="navbar-text mt-3">By Area</p>
           <button
             className="btn btn-sm btn-outline-secondary"
             onClick={() => orderCountriesArea("MAX")}
@@ -128,7 +128,7 @@ const Countries = () => {
           >
             Min-Max
           </button>
-          <p className="navbar-text">By Population</p>
+          <p className="navbar-text mt-3">By Population</p>
           <button
             className="btn btn-sm btn-outline-secondary"
             onClick={() => orderCountriesPopulation("MAX")}
@@ -147,9 +147,10 @@ const Countries = () => {
       <div>
         <div className="container">
           <div className="row">
-            {countriesToShow.map((country) => {
+          {Array.isArray(countriesToShow) && countriesToShow.map((country, i) => {
               return (
                 <a
+                  key={i}
                   className="card"
                   href={`/home/countryDetail/${country.name}`}
                   style={{ textDecoration: "none", width:"13rem", margin:"10px", color:"black"}}

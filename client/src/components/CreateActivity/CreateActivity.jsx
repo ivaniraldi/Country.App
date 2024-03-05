@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import NavBar from "../NavBar/navBar";
 import swal from 'sweetalert';
 import AddActivityView from "./AddActivityView";
 
-const { validate, validateCountries } = require("./formValidate.js");
+import {validate, validateCountries} from "./formValidate.js";
 
 const AddActivity = () => {
   const [InputActivity, setInputActivity] = useState({
@@ -33,7 +33,6 @@ const AddActivity = () => {
   }
 
   function handlerOnChangeCountries(e) {
-    const res = []
     const aux = e.target.value.split(" ");
 
     let includeCountry = false;
